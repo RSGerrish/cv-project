@@ -1,0 +1,15 @@
+.PracticalExperience {
+  min-width: 300px;
+  background-color:#e9967a;
+  display: flex;
+  flex-direction: column;
+}
+
+#pe-btn {
+  border: none;
+  border-radius: 0.25rem;
+  align-self: flex-end;
+  margin: 0.25rem;
+  padding: 0.125rem;
+  background-color:#c27257;
+}
