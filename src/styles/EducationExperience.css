@@ -1,8 +1,17 @@
 .EducationExperience {
-  min-width: 400px;
+  min-width: 500px;
   background-color:#20b2aa;
   display: flex;
   flex-direction: column;
+}
+
+.EEWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.ee-text {
+  background-color: #14918a;
 }
 
 #ee-btn {
@@ -21,13 +30,19 @@
 #ee-sname {
   font-size: 1.2rem;
   font-weight: 600;
+  margin: 0.5rem;
+  max-width: 480px;
 }
 
 #ee-major {
   font-weight: 300;
+  margin: 0.5rem;
+  max-width: 480px;
 }
 
 #ee-graddate {
   font-size: 0.9rem;
   font-weight: 500;
+  margin: 0.5rem;
+  max-width: 480px;
 }

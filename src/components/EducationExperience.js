@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import '../styles/EducationExperience.css';
+import EEWrapper from './controls/EEWrapper.js';
+import Button from './controls/Button.js';
 
 class EducationExperience extends Component {
   setInput = (ele) => {
@@ -10,10 +12,9 @@ class EducationExperience extends Component {
 
     return(
       <div className="EducationExperience">
-        <button id="ee-btn" onClick={this.props.onBtnClicked}>Edit</button>
-        <div id="ee-sname" dangerouslySetInnerHTML={this.setInput(this.props.schoolName)}></div>
-        <div id="ee-major" dangerouslySetInnerHTML={this.setInput(this.props.major)}></div>
-        <div id="ee-graddate" dangerouslySetInnerHTML={this.setInput(this.props.gradDate)}></div>
+        <Button text={this.props.btnTxt} id="ee-btn" onClick={this.props.onBtnClicked} />
+        <EEWrapper schoolName={this.props.schoolName} major={this.props.major} gradDate={this.props.gradDate} status={this.props.status} onChange={this.props.onInputChange} />
+        <Button text="Add" id="ee-add-btn" onClick={this.props.onAddBtnClicked} />
       </div>
     )
   }
