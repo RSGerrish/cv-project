@@ -3,7 +3,6 @@ import './styles/App.css';
 import GeneralInfo from "./components/GeneralInfo";
 import EducationExperience from "./components/EducationExperience";
 import PracticalExperience from "./components/PracticalExperience";
-import Button from "./components/controls/Button.js";
 
 class App extends Component {
   constructor(props) {
