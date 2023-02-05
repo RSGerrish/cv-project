@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 100;
+}
+
+div {
+  cursor:default;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar {
+  text-align: center;
+  max-width: 30rem;
+  margin: auto;
+}
+
+.cv-container {
+  max-width: 30rem;
+  margin: auto;
+}
+
+.name-container {
+  display: flex;
+}
+
+.textbox-name {
+  font-size: 2rem;
+  font-weight: 300;
+  padding-right: 1rem;
+}
+
+.textbox-title {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.textbox-contact {
+  font-size: 1rem;
+}
+
+.textcontrol-container {
+  display: flex;
+}
+
+.textarea-profile {
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.contact-grid-flex {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.contact-grid {
+  display: grid;
+  grid: 2rem 2rem 2rem / 15rem 15rem;
+  width: 90%;
+}
+
+.prof-experience {
+  display: flex;
+  justify-content: center;
+}
+
+.exp-title-container {
+  width: 90%;
+}
+
+.exp-flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+}
+
+.exp-title-container-col2 {
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  min-width: 105px;
+}
+
+.exp-month {
+  margin-right: .25rem;
+}
+
+.separator-to {
+  padding: 0 0.4rem;
+}
+
+.exp-highlight {
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.edu-experience {
+  display: flex;
+  justify-content: center;
+}
+
+.edu-title-container {
+  width: 90%;
+}
+
+.edu-flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edu-title-container-col2 {
+  font-size: 1rem;
+  display: flex;
+}
+
+.date-placeholder {
+  min-width: 50px;
+  max-height: 1.25rem;
+  color: white;
+  text-align: center;
+}
+
+.date-placeholder:hover {
+  background-color:grey;
+  color: white;
+  content: "Add a Date"
+}
+
+.exp-title, .edu-school-name {
+  font-size: 2rem;
+}
+
+.exp-company, .exp-location, .edu-degree, .edu-location {
+  font-size: 1.25rem;
+}
+
+.exp-highlight {
+  font-size: 1rem;
+}
+
+/* Month Control */
+
+.month-control-container {
+  min-width: 2em;
+}
