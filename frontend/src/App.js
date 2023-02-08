@@ -1,19 +1,23 @@
-import EE from "./components/EE";
-import GI from "./components/GI";
-import Navbar from "./components/Navbar";
-import PE from "./components/PE";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+// Pages and Components
+import Navbar from "./components/Navbar"
+import Home from "./pages/Home"
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <div className="cv-container">
-        <GI />
-        <hr />
-        <PE />
-        <hr />
-        <EE />
-      </div>
+      <BrowserRouter>
+        <Navbar />
+        <div className="cv-container">
+          <Routes>
+            <Route
+              path="/"
+              element={<Home />}
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

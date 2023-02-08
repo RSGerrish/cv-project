@@ -1,8 +1,14 @@
+import { Link } from 'react-router-dom'
+
 const Navbar = () => {
   return ( 
-    <div className="navbar">
-      <h1>CV Creator</h1>
-    </div>
+    <header>
+      <div className="navbar">
+        <Link to="/">
+          <h1>CV Creator</h1>
+        </Link>
+      </div>
+    </header>
    );
 }
  
