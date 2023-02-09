@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 const MonthControl = (props) => {
+  const { stateHandler } = props
   const [value, setValue] = useState(props.month);
   const [isEditable, setIsEditable] = useState(false);
 
@@ -42,6 +43,7 @@ const MonthControl = (props) => {
             setValue(e.target.value);
             setIsEditable(false);
             props.handleMonthVal(e.target.value);
+            stateHandler(props.stateName, e.target.value)
           }}>
             <option value="January">January</option>
             <option value="February">February</option>

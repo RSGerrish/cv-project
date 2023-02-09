@@ -2,6 +2,7 @@
 import { useState } from 'react';
 
 const YearControl = (props) => {
+    const { stateHandler } = props
     const [value, setValue] = useState(props.year);
     const [isEditable, setIsEditable] = useState(false);
 
@@ -16,7 +17,7 @@ const YearControl = (props) => {
     // Perform check to see if value="", if it does, then return an empty div
     if(value==="") {
       return (
-        <div className="month-control-container"></div>
+        <div className="year-control-container"></div>
       )
     } else {                // If value is not an empty string, then continue to render the div depending 
       if(isEditable && props.canRemove) {      //or not it is in an editable state or not
@@ -26,10 +27,11 @@ const YearControl = (props) => {
               setValue(e.target.value);
               setIsEditable(false);
               props.handleYearVal(e.target.value);  // Fire the value of the year back to the parent so we can evaluate if we want to render 'to' or not
+              stateHandler(props.stateName, e.target.value)
             }}>
               <option value={""}>none</option>    {/*Option of 'none' available in this condition (only diff)*/}
               {yearList.map((year) => (
-                <option value={year}>{year}</option>
+                <option key={year} value={year}>{year}</option>
               ))}
             </select>
           </div>
@@ -41,6 +43,7 @@ const YearControl = (props) => {
               setValue(e.target.value);
               setIsEditable(false);
               props.handleYearVal(e.target.value);
+              stateHandler(props.stateName, e.target.value)
             }}>
               {yearList.map((year) => (
                 <option value={year}>{year}</option>

@@ -17,6 +17,10 @@ export const cvsReducer = (state, action) => {    //state = reliable previous st
       return {
         cvs: [action.payload, ...state.cvs] // Return the newly added entry (action.payload) and all the rest of the previous entries (...state.cvs)
       }
+    case 'DELETE_CV':
+      return {
+        cvs: state.cvs.filter((c) => c._id !== action.payload._id)
+      }
     default:
       return state
   }
@@ -28,7 +32,7 @@ export const cvsReducer = (state, action) => {    //state = reliable previous st
 export const CVsContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cvsReducer, {    // useReducer is much like useState but we get to 
     cvs: null                                             // invoke a function (cvsReducer) w/ special attributes to handle state changes
-  })                                                      // we are also returning a state value which is an object with with one key of 'cvs' and a value of null
+  })                                                      // we are also returning a state value which is an array of all db objects and a value of null
                                                           // IMPORTANT - to change the state of our object of cvs, we need to invoke dispatch which can be done in 
   return (                                                // all components by importing useCVsContext.js and declaring const {cvs, dispatch} = useCVsContext() in
     <CVsContext.Provider value={{...state, dispatch}} >   {/*the child component where state needs to be updated*/}

@@ -9,7 +9,6 @@ export const useCVsContext = () => {
   if (!context) {
     throw Error('useCVsContext must be used inside a CVsContextProvider')
   }
-  console.log('context')
-  console.log(context)
+
   return context
 }

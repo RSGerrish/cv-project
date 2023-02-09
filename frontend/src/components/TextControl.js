@@ -6,7 +6,8 @@ import { useState } from "react";
 //When finished editing and focus is lost from the input or enter is pressed, the input  
   //becomes a div and the content equals the new text value
 
-const TextControl = (props) => {
+const TextControl = ( props ) => {
+  const { stateHandler } = props
   //props(text, isEdit, classCustom, opt)
   //text = default text value
   //isEdit = boolean to determine if control is editable or not
@@ -25,25 +26,49 @@ const TextControl = (props) => {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       setIsEditable(false);
+      stateHandler(props.stateName, e.target.value)
     }
   }
 
   if (!isEditable) {
     return (
       <div className="textcontrol-container">
-        <div className={props.classCustom} onClick={handleToggleEditOn}>{value}</div>
+        <div 
+          className={props.classCustom} 
+          onClick={handleToggleEditOn}>{value}</div>
       </div>
     )
   } else if (isEditable && option==="box") {
     return (
       <div className="textcontrol-container">
-        <input autoFocus onFocus={(e) => e.currentTarget.select()} onBlur={() => setIsEditable(false)} type={props.classCustom} value={value} className={props.classCustom} onKeyDown={handleKeyPress} onChange={(e) => setValue(e.target.value)}></input>
+        <input 
+          autoFocus 
+          type={props.classCustom} 
+          value={value} 
+          className={props.classCustom} 
+          onFocus={(e) => e.currentTarget.select()}   
+          onChange={(e) => (setValue(e.target.value))}
+          onKeyDown={handleKeyPress} 
+          onBlur={(e) => {
+            setIsEditable(false)
+            stateHandler(props.stateName, e.target.value)
+          }} />
       </div>
     )    
-  } else if (isEditable && props.opt==="area") {
+  } else if (isEditable && option==="area") {
     return(
       <div className="textcontrol-container">
-        <textarea autoFocus onFocus={(e) => e.currentTarget.select()} onBlur={() => setIsEditable(false)} value={value} className={props.classCustom} onKeyDown={handleKeyPress} onChange={(e) => setValue(e.target.value)}></textarea>
+        <textarea 
+          autoFocus 
+          value={value} 
+          className={props.classCustom}
+          onFocus={(e) => e.currentTarget.select()}  
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={handleKeyPress} 
+          onBlur={(e) => {
+            setIsEditable(false)
+            stateHandler(props.stateName, e.target.value)
+          }}  />
       </div>    
     )
   }

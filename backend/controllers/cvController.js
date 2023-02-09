@@ -26,11 +26,11 @@ const getCV = async (req, res) => {
 
 // Create a new CV and save it to the DB
 const createCV = async (req, res) => {
-  const {first, last, title, profile, email, phone, linkedIn, gitHub, website} = req.body // Destructure body of req into vars
+  const {first, last, title, profile, email, phone, linkedIn, gitHub, website, jobTitle, companyName, companyLocation, expFromMonth, expFromYear, expToMonth, expToYear, expHighlights, schoolName, degree, schoolLocation, schFromMonth, schFromYear, schToMonth, schToYear } = req.body // Destructure body of req into vars
 
   try {
     console.log('trying....')
-    const cv = await CV.create({first, last, title, profile, email, phone, linkedIn, gitHub, website}) // Create a new document with these 8 properties and save in DB
+    const cv = await CV.create({first, last, title, profile, email, phone, linkedIn, gitHub, website, jobTitle, companyName, companyLocation, expFromMonth, expFromYear, expToMonth, expToYear, expHighlights, schoolName, degree, schoolLocation, schFromMonth, schFromYear, schToMonth, schToYear}) // Create a new document with these properties and save in DB
     console.log('success!')
     res.status(200).json(cv)  // After the new document is created, respond with a good status of 200 and the new document formatted in JSON
   } catch (error) {
