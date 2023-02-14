@@ -27,7 +27,6 @@ export const cvsReducer = (state, action) => {    //state = reliable previous st
         cvs: state.cvs.filter((c) => c._id !== action.payload._id) //Filter through the list and return all db entries EXCEPT for the deleted one
       }
     case 'UPDATE_CV':
-      console.log(action.payload)
       console.log(`action.payload._id: ${action.payload._id}`)
       console.log(...state.cvs.map((e) => {
         console.log(`e._id: ${e._id}`)
