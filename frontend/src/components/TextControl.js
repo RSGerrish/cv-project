@@ -32,20 +32,20 @@ const TextControl = ( props ) => {
 
   if (!isEditable) {
     return (
-      <div className="textcontrol-container">
+      <div className={props.classCustom}>
         <div 
-          className={props.classCustom} 
+          className="text-control" 
           onClick={handleToggleEditOn}>{value}</div>
       </div>
     )
   } else if (isEditable && option==="box") {
     return (
-      <div className="textcontrol-container">
+      <div className={props.classCustom}>
         <input 
           autoFocus 
           type={props.classCustom} 
           value={value} 
-          className={props.classCustom} 
+          className={"text-control"} 
           onFocus={(e) => e.currentTarget.select()}   
           onChange={(e) => (setValue(e.target.value))}
           onKeyDown={handleKeyPress} 

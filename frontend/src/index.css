@@ -70,6 +70,31 @@ a {
   width: 100%;
 }
 
+.email-contact {
+  font-size: 1rem;
+  grid-area: email;
+}
+
+.phone-contact {
+  font-size: 1rem;
+  grid-area: phone;
+}
+
+.gitHub-contact {
+  font-size: 1rem;
+  grid-area: github;
+}
+
+.website-contact {
+  font-size: 1rem;
+  grid-area: website;
+}
+
+.linkedIn-contact {
+  font-size: 1rem;
+  grid-area: linkedin;
+}
+
 .contact-grid-flex {
   display: flex;
   justify-content: center;
@@ -78,8 +103,12 @@ a {
 
 .contact-grid {
   display: grid;
-  grid: 2rem 2rem 2rem / 15rem 15rem;
+  grid-template-areas:
+  'email phone'
+  'github website'
+  'linkedin linkedin';
   width: 90%;
+  gap: .25em;
 }
 
 .prof-experience {
@@ -97,6 +126,10 @@ a {
   width: auto;
 }
 
+.exp-title-container-col1 {
+  max-width: 60%;
+}
+
 .exp-title-container-col2 {
   font-size: 1rem;
   display: flex;
@@ -104,8 +137,25 @@ a {
   min-width: 105px;
 }
 
+
+.exp-title, .edu-school-name {
+  font-size: 2rem;
+}
+
+.exp-company, .exp-location, .edu-degree, .edu-location {
+  font-size: 1.25rem;
+}
+
+.exp-highlight {
+  font-size: 1rem;
+}
+
 .exp-month {
-  margin-right: .25rem;
+  padding-right: .25rem;
+  width: auto;
+}
+.exp-year {
+  padding-left: .25rem;
 }
 
 .separator-to {
@@ -116,6 +166,22 @@ a {
   font-size: 1.2rem;
   width: 100%;
 }
+
+.empty-exp {
+  font-size: .5em;
+  text-align: center;
+  color:white;
+}
+
+.empty-exp:hover {
+  color:black;
+  background-color:#e2e2d2;
+  border-radius: .25em;
+  box-shadow: 1px 1px #949494;
+}
+
+
+/* Education Experience */
 
 .edu-experience {
   display: flex;
@@ -149,17 +215,20 @@ a {
   content: "Add a Date"
 }
 
-.exp-title, .edu-school-name {
-  font-size: 2rem;
+.empty-sch {
+  font-size: .5em;
+  text-align: center;
+  color:white;
 }
 
-.exp-company, .exp-location, .edu-degree, .edu-location {
-  font-size: 1.25rem;
+.empty-sch:hover {
+  color:black;
+  background-color:#e2e2d2;
+  border-radius: .25em;
+  box-shadow: 1px 1px #949494;
 }
 
-.exp-highlight {
-  font-size: 1rem;
-}
+
 
 /* Month Control */
 

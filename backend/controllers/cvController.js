@@ -26,11 +26,11 @@ const getCV = async (req, res) => {
 
 // Create a new CV and save it to the DB
 const createCV = async (req, res) => {
-  const {first, last, title, profile, email, phone, linkedIn, gitHub, website, jobTitle, companyName, companyLocation, expFromMonth, expFromYear, expToMonth, expToYear, expHighlights, schoolName, degree, schoolLocation, schFromMonth, schFromYear, schToMonth, schToYear } = req.body // Destructure body of req into vars
+  const {first, last, title, profile, email, phone, linkedIn, gitHub, website, jobTitle, companyName, companyLocation, expFromMonth, expFromYear, expToMonth, expToYear, expHighlights, jobTitle2, companyName2, companyLocation2, expFromMonth2, expFromYear2, expToMonth2, expToYear2, expHighlights2, jobTitle3, companyName3, companyLocation3, expFromMonth3, expFromYear3, expToMonth3, expToYear3, expHighlights3, jobTitle4, companyName4, companyLocation4, expFromMonth4, expFromYear4, expToMonth4, expToYear4, expHighlights4, schoolName, degree, schoolLocation, schFromMonth, schFromYear, schToMonth, schToYear, schoolName2, degree2, schoolLocation2, schFromMonth2, schFromYear2, schToMonth2, schToYear2 } = req.body // Destructure body of req into vars
 
   try {
     console.log('trying....')
-    const cv = await CV.create({first, last, title, profile, email, phone, linkedIn, gitHub, website, jobTitle, companyName, companyLocation, expFromMonth, expFromYear, expToMonth, expToYear, expHighlights, schoolName, degree, schoolLocation, schFromMonth, schFromYear, schToMonth, schToYear}) // Create a new document with these properties and save in DB
+    const cv = await CV.create({first, last, title, profile, email, phone, linkedIn, gitHub, website, jobTitle, companyName, companyLocation, expFromMonth, expFromYear, expToMonth, expToYear, expHighlights, jobTitle2, companyName2, companyLocation2, expFromMonth2, expFromYear2, expToMonth2, expToYear2, expHighlights2, jobTitle3, companyName3, companyLocation3, expFromMonth3, expFromYear3, expToMonth3, expToYear3, expHighlights3, jobTitle4, companyName4, companyLocation4, expFromMonth4, expFromYear4, expToMonth4, expToYear4, expHighlights4, schoolName, degree, schoolLocation, schFromMonth, schFromYear, schToMonth, schToYear, schoolName2, degree2, schoolLocation2, schFromMonth2, schFromYear2, schToMonth2, schToYear2 }) // Create a new document with these properties and save in DB
     console.log('success!')
     res.status(200).json(cv)  // After the new document is created, respond with a good status of 200 and the new document formatted in JSON
   } catch (error) {

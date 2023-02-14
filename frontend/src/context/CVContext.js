@@ -8,6 +8,11 @@ export const CVsContext = createContext()         // Make a new context, store i
   // state is the previous value of the database
   // action is the new data entry that also has the request type (action.type) attached to it
 export const cvsReducer = (state, action) => {    //state = reliable previous state value and action=action type passed in from dispatch()
+
+  console.log(action.type)
+  console.log(action.payload)
+  console.log(state)
+
   switch (action.type) {              // Switch case to handle which action to perform
     case 'SET_CVS':                     // If action type is 'SET_CVS' (get all CVs) then
       return {
@@ -15,11 +20,28 @@ export const cvsReducer = (state, action) => {    //state = reliable previous st
       }
     case 'CREATE_CV':                   // If action type is 'CREATE_CV' (create new cv entry) then
       return {
-        cvs: [action.payload, ...state.cvs] // Return the newly added entry (action.payload) and all the rest of the previous entries (...state.cvs)
+        cvs: [action.payload, ...state.cvs] // Return an array which is the newly added entry (action.payload) and all the rest of the previous entries (...state.cvs)
       }
     case 'DELETE_CV':
       return {
-        cvs: state.cvs.filter((c) => c._id !== action.payload._id)
+        cvs: state.cvs.filter((c) => c._id !== action.payload._id) //Filter through the list and return all db entries EXCEPT for the deleted one
+      }
+    case 'UPDATE_CV':
+      console.log(action.payload)
+      console.log(`action.payload._id: ${action.payload._id}`)
+      console.log(...state.cvs.map((e) => {
+        console.log(`e._id: ${e._id}`)
+        if (action.payload._id === e._id) {
+          return action.payload
+        } else return e
+      }))
+
+      return {
+        cvs: [...state.cvs.map((e) => {
+          if (action.payload._id === e._id) {
+            return action.payload
+          } else return e
+        })]
       }
     default:
       return state
