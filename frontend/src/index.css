@@ -1,0 +1,384 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
+
+/* layout */
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+
+body {
+  background: #fff;
+  margin: 0;
+  font-family: "Poppins";
+}
+
+input {
+  outline: none;
+  border:none;
+  background-image:none;
+  background-color:transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: .04em 0;
+  margin: .1em .25em;
+}
+
+textarea {
+  font-family: "Poppins";
+  background-image:none;
+  background-color:transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  border-style: solid;
+}
+
+input:focus {
+  border-radius: .25em;
+  border: .04em;
+  border-style: solid;
+  padding: 0;
+}
+
+button {
+  border-radius:1em;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 1em;
+}
+
+header {
+  background: #fff;
+}
+
+header .navbar {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a {
+  color: #333;
+  text-decoration: none;
+}
+
+.pages{
+  max-width: 700px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color:#f1f1f1;
+}
+
+.cvs-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.cv-display {
+  width: 80%;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+  background-color:#999;
+}
+
+.button-span {
+  cursor: pointer;
+  border-width: 0.1em;
+  border-style: solid;
+  border-radius: 1em;
+  border-color: #000;
+  height: 1.6em;
+  padding: 0 .4em;
+  background-color: #e0648b;
+  margin: 1em;
+}
+
+.button-span:hover {
+  background-color: #e7195a;
+}
+
+/* Add CV Page */
+
+.add-container {
+  display: flex;
+  justify-content: center;
+}
+
+.add-positioner {
+  min-width: 475px;
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  padding: 1em;
+}
+
+.address-input, .address {
+  min-width: 100%;
+  text-align: center;
+}
+
+.phonemail-container {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tel-input, .email-input, .email, .phone {
+  min-width: 50%;
+  text-align: center;
+}
+
+.cv-list {
+  margin: 1em 0;
+  min-width: 30em;
+}
+
+.intro-container {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+.name {
+  font-size: 3em;
+  font-weight: 500;
+  padding: 0;
+  width: 100%;
+}
+
+.prof-title {
+  font-size: 1.75em;
+  font-weight: 300;
+  width: 100%;
+}
+
+.profile-input, .profile , .highlights-input, .highlights {
+  margin: 0;
+  padding: 0;
+  width: 90%;
+  resize: none;
+  font-size: .75em;
+  font-weight: 300;
+}
+
+.profile, .highlights {
+  padding: 0 2em;
+}
+
+.socials-entry, .portfolio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-input {
+  text-align: center;
+  width: 70%;
+}
+
+.portfolio-item {
+  font-size: .85em;
+  font-weight: 400;
+  margin: 0.5em 0;
+}
+
+.experience-entry {
+  width: 100%;
+  position: relative;
+}
+
+.experience-container {
+  margin: 2em 0;
+}
+
+.exp-title-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.pos-title {
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.company-name {
+  font-size: 1em;
+  font-weight: 200;
+  margin: 0 0 1em 0;
+}
+
+.exp-duration-container {
+  width: 50%;
+}
+
+.exp-titdur-container {
+  display: flex;
+  justify-content: center;
+}
+
+.date-input {
+  font-family: Poppins;
+  font-size: .75em;
+}
+
+.add-btn {
+  position:absolute;
+  margin-left: 2em;
+  right: -5em;
+  bottom: 0;
+}
+
+.experience-entry-display {
+  display: flex;
+  margin-top: 1em;
+}
+
+.job-container {
+  display: flex;
+  align-items: center;
+}
+
+.school-entry {
+  width: 100%;
+  position: relative;
+}
+
+.school-container {
+  display: flex;
+  width: 100%;
+}
+
+.sch-duration-container, .sch-name-container {
+  width: 50%;
+}
+
+.sch-name-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sch-btn-spacer {
+  width: 90%;
+}
+
+.schoolname {
+  font-size: 1.75em;
+  margin: 0;
+}
+
+.schoollocation, .degree {
+  font-size: 1em;
+}
+
+.degree {
+  font-weight: 200;
+}
+
+.school-entry-display {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding-left: 5em;
+  margin-top: 2em;
+}
+
+.school-display-container {
+  display: flex;
+  align-items: center;
+}
+
+.skills-entry {
+  width: 100%;
+  position: relative;
+  margin-top: 3em;
+}
+
+.skill {
+  width: 90%
+}
+
+.skills-entry-display {
+  display: flex;
+  justify-content: space-around;
+  margin: 1em 0;
+  flex-wrap:wrap;
+}
+
+.skill-container {
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  border-radius: 1em;
+  border-width: .1em;
+  margin: .25em .5em;
+  padding: 0 .5em
+}
+
+.display-skills-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.display-skill-container {
+  border-style: solid;
+  border-radius: 1em;
+  border-width: .1em;
+  margin: .25em .5em;
+  padding: 0 .5em
+}
+
+.skill-label {
+  padding-left: .65em;
+}
+
+.references-entry {
+  width: 100%;
+  position: relative;
+  margin-top: 3em;
+}
+
+.ref-name, .ref-phone, .ref-relation {
+  margin: 0 1.5em;
+}
+
+.reference-entry-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1em 0;
+}
+
+.reference-container {
+  display: flex;
+  align-items: center;
+}
+
+.references-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
