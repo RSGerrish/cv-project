@@ -20,5 +20,8 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.1",
     "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
   }
 }
