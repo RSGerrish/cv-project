@@ -2,9 +2,11 @@ import uniqid from "uniqid"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCVsContext } from "../hooks/useCVsContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 
 const AddCV = () => {
   const { cvsDispatch } = useCVsContext()
+  const { user } = useAuthContext()
 
   const [address, setAddress] = useState('')
   const [phone, setPhone] = useState('')
@@ -135,15 +137,19 @@ const AddCV = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const cv = {address, phone, email, title, name, profile, website, github, linkedin, experience, schools, skills, references}
+    if(!user) {
+      setError('You must be logged in')
+      return
+    }
 
-    console.log(cv)
+    const cv = {address, phone, email, title, name, profile, website, github, linkedin, experience, schools, skills, references}
     
     const response = await fetch('/api/cvs', {
       method: 'POST',
       body: JSON.stringify(cv),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
 
@@ -295,7 +301,7 @@ const AddCV = () => {
               return (
                 <div key={uniqid()} className="school-display-container">
                   <div>{school.name}</div>
-                  <span index={i} className="button-span" onClick={handleRemoveSchool}>remove</span>
+                  <span index={i} className="button-span" onClick={handleRemoveSchool}>X</span>
                 </div>
               )
             })}

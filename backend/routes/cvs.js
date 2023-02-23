@@ -1,7 +1,11 @@
 const express = require('express')
 const { getCVs, getCV, createCV, deleteCV, updateCV } = require('../controllers/cvController')
+const requireAuth = require('../middleware/requireAuth')
 
 const router = express.Router()
+
+// Require Auth for all CV routes
+router.use(requireAuth)
 
 // GET all CVs
 router.get('/', getCVs)

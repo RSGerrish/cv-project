@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 
 // Get all CVs
 const getCVs = async (req, res) => {
-  const cvs = await CV.find({}).sort({createdAt: -1}) // ex. CV.find({_id: xxx }) will find all records that have an ._id property of xxx PERHAPS USEFUL FOR UPDATING
+  const user_id = req.user._id
+
+  const cvs = await CV.find({ user_id }).sort({createdAt: -1}) // ex. CV.find({_id: xxx }) will find all records that have an ._id property of xxx PERHAPS USEFUL FOR UPDATING
   res.status(200).json(cvs)
 }
 
@@ -31,7 +33,8 @@ const createCV = async (req, res) => {
 
   // Add document to DB
   try {
-    const cv = await CV.create({address, phone, email, title, name, profile, website, github, linkedin, experience, schools, skills, references})
+    const user_id = req.user._id
+    const cv = await CV.create({address, phone, email, title, name, profile, website, github, linkedin, experience, schools, skills, references, user_id})
     res.status(200).json(cv)
   } catch (error) {
     res.status(400).json({error: error.message})
