@@ -6,6 +6,8 @@ const getCVs = async (req, res) => {
   const user_id = req.user._id
 
   const cvs = await CV.find({ user_id }).sort({createdAt: -1}) // ex. CV.find({_id: xxx }) will find all records that have an ._id property of xxx PERHAPS USEFUL FOR UPDATING
+  res.setHeader("Access-Control-Allow-Origin", "localhost:3000")
+
   res.status(200).json(cvs)
 }
 
