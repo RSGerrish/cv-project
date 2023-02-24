@@ -4,6 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cvRoutes = require('./routes/cvs')
 const userRoutes = require('./routes/user')
+const healthRoutes = require('./routes/health')
 
 // express app
 const app = express()
@@ -19,8 +20,11 @@ app.use((req, res, next) => {
 // Routes  
 app.use('/api/cvs', cvRoutes)
 app.use('/api/user', userRoutes)
+app.use('/api/health', healthRoutes)
 
 // Connect to DB
+
+mongoose.set('strictQuery', true)
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   // Listen for requests
