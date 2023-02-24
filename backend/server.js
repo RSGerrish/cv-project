@@ -17,7 +17,7 @@ const whitelist = ['http://localhost:3000', 'https://cv-project-ten.vercel.app/'
 
 app.use(
   cors({
-    origin: 'https://cv-project-ten.vercel.app/'
+    origin: 'https://cv-project-ten.vercel.app',
   })
 )
 
