@@ -13,6 +13,12 @@ const app = express()
 app.use(express.json())
 
 app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "localhost:3000")
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  
   console.log(req.path, req.method)
   next()
 })
