@@ -144,7 +144,7 @@ const AddCV = () => {
 
     const cv = {address, phone, email, title, name, profile, website, github, linkedin, experience, schools, skills, references}
     
-    const response = await fetch('/api/cvs', {
+    const response = await fetch('https://cv-creator.onrender.com/api/cvs', {
       method: 'POST',
       body: JSON.stringify(cv),
       headers: {

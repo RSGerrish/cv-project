@@ -139,7 +139,7 @@ const EditCV = () => {
 
     const cv = {address, phone, email, title, name, profile, website, github, linkedin, experience, schools, skills, references}
 
-    const response = await fetch('/api/cvs/' + cvs[index]._id, {
+    const response = await fetch('https://cv-creator.onrender.com/api/cvs/' + cvs[index]._id, {
       method: 'PATCH',
       body: JSON.stringify(cv),
       headers: {

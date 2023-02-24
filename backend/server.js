@@ -13,9 +13,17 @@ const app = express()
 // Middleware
 app.use(express.json())
 
+const whitelist = ['http://localhost:3000', 'https://cv-project-ten.vercel.app/']
+
 app.use(
   cors({
-    origin: "http://localhost:3000"
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    }
   })
 )
 
