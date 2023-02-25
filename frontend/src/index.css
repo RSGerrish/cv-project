@@ -1,10 +1,12 @@
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 /* layout */
 :root {
   --primary: #1aac83;
+  --primary_soft: #bde2d9;
   --error: #e7195a;
+  --error_soft: #e986a6;
 }
 
 body {
@@ -44,10 +46,21 @@ input:focus {
 }
 
 button {
-  border-radius:1em;
-  font-size: 1em;
   font-weight: 600;
   padding: 1em;
+  background: #fff;
+  margin-left: 10px;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button:hover {
+  background: var(--primary_soft);
 }
 
 header {
@@ -84,6 +97,10 @@ nav button {
   font-size: 1em;
 }
 
+nav button:hover {
+  background: var(--primary_soft);
+}
+
 header a {
   color: #333;
   text-decoration: none;
@@ -95,6 +112,59 @@ header a {
   margin: 0 auto;
   background-color:#f1f1f1;
 }
+
+
+/* Lander */
+
+.lander-container {
+  padding: 2rem;
+}
+
+.create-container {
+  display: flex;
+  justify-content: center;
+}
+
+.create-container>a {
+  text-decoration: none;
+}
+
+.lander-span {
+  background: #fff;
+  margin-top: 3rem;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.lander-span:hover {
+  background: var(--primary_soft);
+}
+
+.lander-text>h2 {
+  display: flex;
+  justify-content:space-between;
+  text-align: center;
+  word-spacing:.5rem;
+  margin-top: 4rem;
+}
+
+.lander-text > ul {
+  margin: 3rem auto 1rem;
+  text-align: center;
+  max-width: 20rem;
+}
+
+.lander-text>ul>li {
+  margin-left: 2rem;
+  text-align: left;
+}
+
+/* CVDisplay */
 
 .cvs-display {
   display: flex;
@@ -113,35 +183,84 @@ header a {
   justify-content: center;
 }
 
-.title-container {
+.cv-controls>a {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2em;
-  background-color:#999;
+  justify-content: center;
+  text-decoration: none;
+  color:#000;
 }
 
 .button-span {
   cursor: pointer;
-  border-width: 0.1em;
-  border-style: solid;
-  border-radius: 1em;
-  border-color: #000;
-  height: 1.6em;
-  padding: 0 .4em;
-  background-color: #e0648b;
-  margin: 0.5em 0.5em 0.5em 1em;
+  background: #fff;
+  margin: 1rem 0.5rem;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 0 10px;
+  border-radius: 0.5rem;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
 }
 
 .button-span:hover {
-  background-color: #e7195a;
+  background-color: var(--primary_soft);
+}
+
+.reference-title-container {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.reference-tit-container {
+  display: grid;
+  grid-template-columns: 10rem 10rem 10rem;
+  gap: 3rem;
+  justify-content: left;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1rem;
+  min-width: 550px;
+  text-decoration: underline;
+}
+
+.reference-dis-container {
+  display:grid;
+  width: 550px;
+  align-items: center;
+  justify-content: left;
+  grid-template-areas: 
+    "rname rphone rrelation rdelete";
+  grid-template-columns: 10rem 10rem 10rem;
+  font-size: .75rem;
+  gap: 3rem;
+  padding: 0.5rem;
 }
 
 /* Add CV Page */
 
+.title-container {
+  display: flex;
+  justify-content: center;
+  position:absolute;
+  background-color:#3f3f3f;
+  color:#f1f1f1;
+  width: 90vw;
+  left: 5vw;
+}
+
+.title-position {
+  max-width: 900px;
+  min-width: 650px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .add-container {
   display: flex;
   justify-content: center;
+  padding-top: 5rem;
 }
 
 .add-positioner {
@@ -188,8 +307,8 @@ header a {
 .name {
   font-size: 3em;
   font-weight: 500;
-  padding: 0;
   width: 100%;
+  margin-top: 1rem;
   margin-bottom: 0;
 }
 
@@ -201,7 +320,7 @@ header a {
 }
 
 .profile-input, .profile , .highlights-input, .highlights {
-  margin: 0;
+  margin: 0 0 1.5rem 0;
   padding: 0;
   width: 90%;
   resize: none;
@@ -259,6 +378,12 @@ header a {
 
 .exp-duration-container {
   width: 50%;
+  display: flex;
+  justify-content: end;
+}
+
+.exp-date {
+  margin-left: 1em;
 }
 
 .exp-titdur-container {
@@ -281,15 +406,35 @@ header a {
 .experience-entry-display {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  padding-left: 5em;
+  align-items: center;
   margin-top: 2em;
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+  margin-left: 1rem;
+  color: var(--error_soft);
+}
+
+.material-symbols-outlined:hover {
+  color: var(--error);
 }
 
 .job-container {
   display: flex;
-  align-items: center;
-  margin: 0 1.5em;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 80%
+}
+
+.job-element {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color:#fff;
+  border-radius: 1rem;
+  box-shadow:.1rem .1rem .25rem #000;
+  width: 100%;
 }
 
 .school-entry {
@@ -305,6 +450,11 @@ header a {
 
 .sch-duration-container, .sch-name-container {
   width: 50%;
+}
+
+.sch-duration-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .sch-name-container {
@@ -332,14 +482,20 @@ header a {
 .school-entry-display {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  padding-left: 5em;
+  align-items: center;
   margin-top: 2em;
 }
 
 .school-display-container {
   display: flex;
+  justify-content: space-between;
+  width: 80%;
+  padding: 0.5rem;
+  background-color:#fff;
+  border-radius: 1rem;
+  box-shadow:.1rem .1rem .25rem #000;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .skills-entry {
@@ -362,11 +518,11 @@ header a {
 .skill-container {
   display: flex;
   align-items: center;
-  border-style: solid;
   border-radius: 1em;
-  border-width: .1em;
   margin: .25em .5em;
-  padding: 0 .5em
+  padding: 0 .5em;
+  background-color: #fff;
+  box-shadow:.1rem .1rem .25rem #000;
 }
 
 .display-skills-container {
@@ -426,13 +582,21 @@ header a {
 }
 
 .reference-container {
-  display: grid;
+  display:grid;
+  min-width: 550px;
   align-items: center;
+  justify-content: center;
   grid-template-areas: 
-    "rname rphone rrelation";
-  grid-template-columns: 10em 10em 10em;
+    "rname rphone rrelation rdelete";
+  grid-template-columns: 10em 10em 10em 3em;
+  font-size: .75rem;
+  gap: 3rem;
+  margin-top: 2rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow:.1rem .1rem .25rem #000;
+  padding: 0.5rem;
 }
-
 
 /* Login Page */
 .login, .signup {

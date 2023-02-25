@@ -13,11 +13,9 @@ const app = express()
 // Middleware
 app.use(express.json())
 
-const whitelist = ['http://localhost:3000', 'https://cv-project-ten.vercel.app/']
-
 app.use(
   cors({
-    origin: 'https://cv-project-ten.vercel.app',
+    origin: process.env.LOCAL_URI,
   })
 )
 

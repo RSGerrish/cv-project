@@ -3,10 +3,12 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useCVsContext } from "../hooks/useCVsContext"
 import { useAuthContext } from "../hooks/useAuthContext"
+import { useIndexContext } from "../hooks/useIndexContext"
 
 const AddCV = () => {
-  const { cvsDispatch } = useCVsContext()
+  const { cvs, cvsDispatch } = useCVsContext()
   const { user } = useAuthContext()
+  const { indexDispatch } = useIndexContext()
 
   const [address, setAddress] = useState('')
   const [phone, setPhone] = useState('')
@@ -85,6 +87,7 @@ const AddCV = () => {
 
   const handleRemoveSchool = (e) => {
     e.preventDefault()
+
     const remIndex = e.target.getAttribute("index")
     const newArr = schools
 
@@ -95,10 +98,35 @@ const AddCV = () => {
   }
 
   const handleAddSkill = (e) => {
-    e.preventDefault()
+    if (e) e.preventDefault()
 
     setSkills([...skills, skill])
     setSkill('')
+  }
+
+  const handleAddSkillKP = (e) => {
+    if (e.key.length === 1) {
+      setSkill(e.target.value + e.key);
+      console.log(e);
+    } 
+    else if (e.key === 'Enter') {
+      e.preventDefault()
+      handleAddSkill()
+    } 
+    else if (e.key === 'Backspace' || 'Delete') {
+      const transformArr = e.target.value.split('')
+      console.log(e)
+      if (e.target.selectionEnd != e.target.selectionStart) { 
+        transformArr.splice(e.target.selectionStart, e.target.selectionEnd - e.target.selectionStart)
+        setSkill(transformArr.join(''))
+      } else if (e.key === 'Backspace') {
+        transformArr.splice(e.target.selectionStart - 1, 1)
+        setSkill(transformArr.join(''))
+      } else if (e.key === 'Delete') {
+        transformArr.splice(e.target.selectionStart, 1)
+        setSkill(transformArr.join(''))
+      }
+    }
   }
 
   const handleRemoveSkill = (e) => {
@@ -144,7 +172,7 @@ const AddCV = () => {
 
     const cv = {address, phone, email, title, name, profile, website, github, linkedin, experience, schools, skills, references}
     
-    const response = await fetch('https://cv-creator.onrender.com/api/cvs', {
+    const response = await fetch('http://localhost:4005' + '/api/cvs/', {
       method: 'POST',
       body: JSON.stringify(cv),
       headers: {
@@ -175,6 +203,7 @@ const AddCV = () => {
       setError(null)
 
       cvsDispatch({type: 'CREATE_CV', payload: json})
+      indexDispatch({type: 'SET_INDEX', payload: cvs.length})
       navigateDisplayPage()
     }
   }
@@ -182,8 +211,10 @@ const AddCV = () => {
   return ( 
     <form className="new-cv-form" onSubmit={handleSubmit}>
       <div className="title-container">
-        <div className="add-title"><h3>Add a New CV</h3></div>
-        <button>Save</button>
+        <div className="title-position">
+          <div className="add-title"><h2>Add a New CV</h2></div>
+          <button>Save</button>
+        </div>
       </div>
       <div className="add-container">
         <div className="add-positioner">
@@ -273,8 +304,10 @@ const AddCV = () => {
             {experience && experience.map((job, i) => {
               return (
                 <div key={uniqid()} className="job-container">
-                  <div>{job.jobtitle}</div>
-                  <span index={i} className="button-span" onClick={handleRemoveJob}>X</span>
+                  <div className="job-element">
+                    <div>{job.jobtitle}</div>
+                    <span index={i} className="material-symbols-outlined" onClick={handleRemoveJob}>delete</span>
+                  </div>
                 </div>
               )
             })}
@@ -301,7 +334,7 @@ const AddCV = () => {
               return (
                 <div key={uniqid()} className="school-display-container">
                   <div>{school.name}</div>
-                  <span index={i} className="button-span" onClick={handleRemoveSchool}>X</span>
+                  <span index={i} className="material-symbols-outlined" onClick={handleRemoveSchool}>delete</span>
                 </div>
               )
             })}
@@ -310,7 +343,7 @@ const AddCV = () => {
           <hr />
 
           <div className="skills-entry">
-            <input className="skill" type="text" value={skill} placeholder="Add skills, certifications and/or general achievements here (ie. LEAN Certified, etc...)" onChange={(e) => setSkill(e.target.value)} />
+            <input className="skill" type="text" value={skill} placeholder="Add skills, certifications and/or general achievements here (ie. LEAN Certified, etc...)" onKeyDown={handleAddSkillKP} />
 
             <button className="add-btn" onClick={handleAddSkill}>Add</button>
           </div>
@@ -320,7 +353,7 @@ const AddCV = () => {
               return (
                 <div key={uniqid()} className="skill-container">
                   <div className='skill-label'>{skill}</div>
-                  <span index={i} className="button-span" onClick={handleRemoveSkill}>X</span>
+                  <span index={i} className="material-symbols-outlined" onClick={handleRemoveSkill}>delete</span>
                 </div>
               )
             })}
@@ -341,7 +374,9 @@ const AddCV = () => {
               return (
                 <div key={uniqid()} className="reference-container">
                   <div className='reference-label'>{reference.refname}</div>
-                  <span index={i} className="button-span" onClick={handleRemoveReference}>X</span>
+                  <div className="reference-phone">{reference.refphone}</div>
+                  <div className="reference-relation">{reference.refrelation}</div>
+                  <span index={i} className="material-symbols-outlined" onClick={handleRemoveReference}>delete</span>
                 </div>
               )
             })}

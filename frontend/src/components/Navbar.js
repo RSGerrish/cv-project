@@ -16,9 +16,6 @@ const Navbar = () => {
         <Link to="/">
           <h1>CV Creator</h1>
         </Link>
-        <Link to="/AddCV">
-          <div className="navbar-link">Add CV</div>
-        </Link>
         <nav>
           {user && (
           <div>

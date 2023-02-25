@@ -1,14 +1,15 @@
 import uniqid from 'uniqid'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { useCVsContext } from '../hooks/useCVsContext'
 import { useIndexContext } from '../hooks/useIndexContext'
 import { useAuthContext } from "../hooks/useAuthContext"
+import Lander from './Lander'
 
 const CVDisplay = ({ cv }) => {
   const { cvsDispatch } = useCVsContext()
   const { index, indexDispatch } = useIndexContext()
   const { user } = useAuthContext()
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleDelete = async () => {
     if (!user) {
@@ -39,18 +40,19 @@ const CVDisplay = ({ cv }) => {
   }
 
   return ( 
-    <div className="cv-display">
+    <div key ={uniqid()} className="cv-display">
       {cv && <div className="cv-display-container">
         <div className="cv-controls">
+          <Link to="/AddCV">
+            <span className="button-span">new</span>
+          </Link>
           <span className="button-span" onClick={handleDelete}>delete</span>
           <span className="button-span" onClick={handleEdit}>edit</span>
         </div>
         <div className="contact-container">
+          <div className="phone">{cv.phone}</div>
+          <div className="email">{cv.email}</div>
           <div className="address">{cv.address}</div>
-          <div className="phonemail-container">
-            <div className="phone">{cv.phone}</div>
-            <div className="email">{cv.email}</div>
-          </div>
         </div>
 
         <h1 className="name">{cv.name}</h1>
@@ -64,6 +66,11 @@ const CVDisplay = ({ cv }) => {
         </div>
         <hr />
         {cv.experience && cv.experience.map((job) => {
+          const parseDateFrom = job.datefrom.split('-')
+          const parseDateTo = job.dateto.split('-')
+          const expDateFrom = new Date(parseInt(parseDateFrom[0]), parseInt(parseDateFrom[1]) - 1, parseInt(parseDateFrom[2]))
+          const expDateTo = new Date(parseInt(parseDateTo[0]), parseInt(parseDateTo[1]) - 1, parseInt(parseDateTo[2]))
+
           return (
             <div key={uniqid()} className="experience-container">
               <div className="exp-titdur-container">
@@ -72,9 +79,9 @@ const CVDisplay = ({ cv }) => {
                   <h4 className="company-name">{job.companyname}</h4>
                 </div>
                 <div className="exp-duration-container">
-                  <span className="exp-date">{job.datefrom}</span>
-                  <span className="exp-date">to</span>
-                  <span className="exp-date">{job.dateto}</span>
+                  {job.datefrom && <span className="exp-date">{expDateFrom.toLocaleDateString('en-us', { month: "long", year: "numeric" })}</span>}
+                  {job.datefrom && <span className="exp-date">to</span>}
+                  <span className="exp-date">{expDateTo.toLocaleDateString('en-us', { month: "long", year: "numeric" })}</span>
                 </div>
               </div>
               <div className="highlights">{job.highlights}</div>
@@ -83,6 +90,12 @@ const CVDisplay = ({ cv }) => {
         })}
         <hr />
         {cv.schools && cv.schools.map((school) => {
+          const parseDateFrom = school.datefrom.split('-')
+          const parseDateTo = school.dateto.split('-')
+          const schDateFrom = new Date(parseInt(parseDateFrom[0]), parseInt(parseDateFrom[1]) - 1, parseInt(parseDateFrom[2]))
+          const schDateTo = new Date(parseInt(parseDateTo[0]), parseInt(parseDateTo[1]) - 1, parseInt(parseDateTo[2]))
+
+
           return (
             <div key={uniqid()} className="school-container">
               <div className="sch-name-container">
@@ -91,9 +104,9 @@ const CVDisplay = ({ cv }) => {
                 <div className="school-degree">{school.degree}</div>
               </div>
               <div className="sch-duration-container">
-                <span className="exp-date">{school.datefrom}</span>
-                <span className="exp-date">to</span>
-                <span className="exp-date">{school.dateto}</span>
+                {school.datefrom && <span className="exp-date">{schDateFrom.toLocaleDateString('en-us', { month: "long", year: "numeric" })}</span>}
+                {school.datefrom && <span className="exp-date">to</span>}
+                <span className="exp-date">{schDateTo.toLocaleDateString('en-us', { month: "long", year: "numeric" })}</span>
               </div>
             </div>
           )
@@ -108,17 +121,26 @@ const CVDisplay = ({ cv }) => {
         </div>
         <hr />
         <div className="references-container">
+          {cv.references && <div className="reference-title-container">
+            <div className="reference-title"><h2>References</h2></div>
+              <div className="reference-tit-container">
+                <div className="ref-tit-name">Name</div>
+                <div className="ref-tit-relation">Relation</div>
+                <div className="ref-tit-phone">Contact Number</div>
+              </div>
+            </div>}
           {cv.references && cv.references.map((reference) => {
             return (
-              <div className="reference-container">
-                <div className="ref-name">{reference.refname}</div>
-                <div className="ref-phone">{reference.refphone}</div>
-                <div className="ref-relation">{reference.refrelation}</div>
+              <div className="reference-dis-container">
+                <div className="ref-dis-name">{reference.refname}</div>
+                <div className="ref-dis-relation">{reference.refrelation}</div>
+                <div className="ref-dis-phone">{reference.refphone}</div>
               </div>
             )
           })}
         </div>
       </div>}
+      {!cv && <Lander />}
     </div>
    );
 }

@@ -139,7 +139,7 @@ const EditCV = () => {
 
     const cv = {address, phone, email, title, name, profile, website, github, linkedin, experience, schools, skills, references}
 
-    const response = await fetch('https://cv-creator.onrender.com/api/cvs/' + cvs[index]._id, {
+    const response = await fetch('http://localhost:4005' + '/api/cvs/' + cvs[index]._id, {
       method: 'PATCH',
       body: JSON.stringify(cv),
       headers: {
@@ -177,8 +177,10 @@ const EditCV = () => {
   return ( 
     <form className="new-cv-form" onSubmit={handleSubmit}>
       <div className="title-container">
-        <div className="add-title"><h3>Add a New CV</h3></div>
-        <button>Save</button>
+        <div className="title-position">
+          <div className="add-title"><h3>Edit CV</h3></div>
+          <button>Save</button>
+        </div>
       </div>
       <div className="add-container">
         <div className="add-positioner">
@@ -268,8 +270,10 @@ const EditCV = () => {
             {experience && experience.map((job, i) => {
               return (
                 <div key={uniqid()} className="job-container">
-                  <div>{job.jobtitle}</div>
-                  <span index={i} className="button-span" onClick={handleRemoveJob}>X</span>
+                  <div className="job-element">
+                    <div>{job.jobtitle}</div>
+                    <span index={i} className="material-symbols-outlined" onClick={handleRemoveJob}>delete</span>
+                  </div>
                 </div>
               )
             })}
@@ -296,7 +300,7 @@ const EditCV = () => {
               return (
                 <div key={uniqid()} className="school-display-container">
                   <div>{school.name}</div>
-                  <span index={i} className="button-span" onClick={handleRemoveSchool}>X</span>
+                  <span index={i} className="material-symbols-outlined" onClick={handleRemoveSchool}>delete</span>
                 </div>
               )
             })}
@@ -315,7 +319,7 @@ const EditCV = () => {
               return (
                 <div key={uniqid()} className="skill-container">
                   <div className='skill-label'>{skill}</div>
-                  <span index={i} className="button-span" onClick={handleRemoveSkill}>X</span>
+                  <span index={i} className="material-symbols-outlined" onClick={handleRemoveSkill}>delete</span>
                 </div>
               )
             })}
@@ -336,7 +340,9 @@ const EditCV = () => {
               return (
                 <div key={uniqid()} className="reference-container">
                   <div className='reference-label'>{reference.refname}</div>
-                  <span index={i} className="button-span" onClick={handleRemoveReference}>X</span>
+                  <div className="reference-phone">{reference.refphone}</div>
+                  <div className="reference-relation">{reference.refrelation}</div>
+                  <span index={i} className="material-symbols-outlined" onClick={handleRemoveReference}>delete</span>
                 </div>
               )
             })}
