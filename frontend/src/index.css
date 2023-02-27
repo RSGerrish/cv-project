@@ -118,9 +118,9 @@ header a {
 
 .pages{
   max-width: 700px;
-  padding: 0 20px;
+  padding: 2em 20px;
   margin: auto;
-  min-height: calc(100vh - var(--footer_height) - var(--header_height) - 2rem);
+  min-height: calc(100vh - var(--footer_height) - var(--header_height) - 6em);
   background-color:#f1f1f1;
 }
 
