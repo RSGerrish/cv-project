@@ -20,7 +20,7 @@ const CVDisplay = ({ cv }) => {
       return
     }
 
-    const response = await fetch('https://cv-project-ten.vercel.app:4005' + '/api/cvs/' + cv._id, {
+    const response = await fetch('https://cv-creator.onrender.com:4005' + '/api/cvs/' + cv._id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${user.token}`

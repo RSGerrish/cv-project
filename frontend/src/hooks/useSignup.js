@@ -10,7 +10,7 @@ export const useSignup = () => {
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('https://cv-project-ten.vercel.app:4005' + '/api/user/signup', {
+    const response = await fetch('https://cv-creator.onrender.com:4005' + '/api/user/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({email, password})
