@@ -13,11 +13,7 @@ const app = express()
 // Middleware
 app.use(express.json())
 
-app.use(
-  cors({
-    origin: 'cv-project-ten.vercel.app',
-  })
-)
+app.use(cors())
 
 app.use((req, res, next) => {
   console.log(req.path, req.method)
