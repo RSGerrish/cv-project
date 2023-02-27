@@ -13,7 +13,21 @@ const app = express()
 // Middleware
 app.use(express.json())
 
-app.use(cors())
+const allowedOrigins = ['https://cv-project-ten.vercel.app', 'http://localhost:3000']
+
+app.use(
+  cors({
+    origin: function(origin, callback) {
+      // allow requests with no orign (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        return callback(new Error('The CORS policy for this site does not allow access from the specified origin'), false)
+      }
+
+      return callback (null, true);
+    }
+  })
+)
 
 app.use((req, res, next) => {
   console.log(req.path, req.method)
