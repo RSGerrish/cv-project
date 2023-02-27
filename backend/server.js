@@ -16,8 +16,8 @@ app.use(express.json())
 const allowedOrigins = ['https://cv-project-ten.vercel.app', 'http://localhost:3000']
 
 app.use(
-  cors(
-    // origin: 'https://cv-project-ten.vercel.app',
+  cors({
+    origin: '*',
 
     // origin: function(origin, callback) {
     //   // allow requests with no orign (like mobile apps or curl requests)
@@ -28,7 +28,7 @@ app.use(
 
     //   return callback (null, true);
     // }
-  )
+  })
 )
 
 app.use((req, res, next) => {
