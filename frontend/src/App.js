@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import AddCV from './pages/AddCV';
 import EditCV from './pages/EditCV';
+import Footer from './components/Footer'
 
 function App() {
   const { user } = useAuthContext()
@@ -41,6 +42,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }

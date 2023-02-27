@@ -212,7 +212,7 @@ const AddCV = () => {
     <form className="new-cv-form" onSubmit={handleSubmit}>
       <div className="title-container">
         <div className="title-position">
-          <div className="add-title"><h2>Add a New CV</h2></div>
+          <div className="add-title"><h1>Add a New CV</h1></div>
           <button>Save</button>
         </div>
       </div>

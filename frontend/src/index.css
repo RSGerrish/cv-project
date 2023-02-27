@@ -7,6 +7,13 @@
   --primary_soft: #bde2d9;
   --error: #e7195a;
   --error_soft: #e986a6;
+  --fhbackground: #c5dffd;
+  --header_height: 100px;
+  --footer_height: 70px;
+}
+
+.App {
+  min-height: 100vh;
 }
 
 body {
@@ -63,8 +70,15 @@ button:hover {
   background: var(--primary_soft);
 }
 
+
+
+/* Header */
+
 header {
-  background: #fff;
+  background: var(--fhbackground);
+  margin-bottom: 1rem;
+  box-shadow: 0 .1rem .25rem #000000;
+  min-height: 10vh;
 }
 
 header .navbar {
@@ -109,7 +123,8 @@ header a {
 .pages{
   max-width: 700px;
   padding: 20px;
-  margin: 0 auto;
+  margin: auto;
+  min-height: calc(100vh - var(--footer_height) - var(--header_height) - 6.5rem);
   background-color:#f1f1f1;
 }
 
@@ -266,6 +281,10 @@ header a {
 .add-positioner {
   min-width: 475px;
   text-align: center;
+}
+
+.add-title>h1 {
+  font-weight: 200;
 }
 
 .contact-container {
@@ -613,4 +632,16 @@ header a {
   border-color: #f1f1f1;
   border-width: 1px;
   width: 100%;
+}
+
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  background-color: var(--fhbackground);
+  margin-top: 1rem;
+  box-shadow: 0 -.1rem .25rem #000;
 }
