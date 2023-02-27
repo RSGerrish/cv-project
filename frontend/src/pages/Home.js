@@ -13,11 +13,10 @@ const Home = () => {
   const {user} = useAuthContext()
 
   const SERVER_URI = 'https://cv-project-ten.vercel.app:4005'
-  const LOCAL_SERVER_URI = 'http://localhost:4005'
 
   useEffect(() => {
     const fetchCVs = async () => {
-      const response = await fetch('http://localhost:4005' + '/api/cvs/', {
+      const response = await fetch('https://cv-project-ten.vercel.app:4005' + '/api/cvs/', {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }

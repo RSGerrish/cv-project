@@ -12,10 +12,6 @@
   --footer_height: 70px;
 }
 
-.App {
-  min-height: 100vh;
-}
-
 body {
   background: #fff;
   margin: 0;
@@ -78,7 +74,7 @@ header {
   background: var(--fhbackground);
   margin-bottom: 1rem;
   box-shadow: 0 .1rem .25rem #000000;
-  min-height: 10vh;
+  height: var(--header_height);
 }
 
 header .navbar {
@@ -122,9 +118,9 @@ header a {
 
 .pages{
   max-width: 700px;
-  padding: 20px;
+  padding: 0 20px;
   margin: auto;
-  min-height: calc(100vh - var(--footer_height) - var(--header_height) - 6.5rem);
+  min-height: calc(100vh - var(--footer_height) - var(--header_height) - 2rem);
   background-color:#f1f1f1;
 }
 
@@ -640,7 +636,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70px;
+  height: var(--footer_height);
   background-color: var(--fhbackground);
   margin-top: 1rem;
   box-shadow: 0 -.1rem .25rem #000;

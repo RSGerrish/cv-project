@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.use(
   cors({
-    origin: process.env.LOCAL_URI,
+    origin: process.env.MWARE_URI,
   })
 )
 
