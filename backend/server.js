@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.use(
   cors({
-    origin: 'https://cv-project-ten.vercel.app',
+    origin: 'cv-project-ten.vercel.app',
   })
 )
 
