@@ -12,11 +12,9 @@ const Home = () => {
   const {index} = useIndexContext()
   const {user} = useAuthContext()
 
-  const SERVER_URI = 'https://cv-project-ten.vercel.app:4005' + 'https://cv-creator.onrender.com:4005'
-
   useEffect(() => {
     const fetchCVs = async () => {
-      const response = await fetch('https://cv-creator.onrender.com:4005' + '/api/cvs/', {
+      const response = await fetch('https://cv-creator.onrender.com' + '/api/cvs/', {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
