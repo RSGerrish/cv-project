@@ -95,10 +95,35 @@ const EditCV = () => {
   }
 
   const handleAddSkill = (e) => {
-    e.preventDefault()
+    if (e) e.preventDefault()
 
     setSkills([...skills, skill])
     setSkill('')
+  }
+
+  const handleAddSkillKP = (e) => {
+    if (e.key.length === 1) {
+      setSkill(e.target.value + e.key);
+      console.log(e);
+    } 
+    else if (e.key === 'Enter') {
+      e.preventDefault()
+      handleAddSkill()
+    } 
+    else if (e.key === 'Backspace' || 'Delete') {
+      const transformArr = e.target.value.split('')
+      console.log(e)
+      if (e.target.selectionEnd !== e.target.selectionStart) { 
+        transformArr.splice(e.target.selectionStart, e.target.selectionEnd - e.target.selectionStart)
+        setSkill(transformArr.join(''))
+      } else if (e.key === 'Backspace') {
+        transformArr.splice(e.target.selectionStart - 1, 1)
+        setSkill(transformArr.join(''))
+      } else if (e.key === 'Delete') {
+        transformArr.splice(e.target.selectionStart, 1)
+        setSkill(transformArr.join(''))
+      }
+    }
   }
 
   const handleRemoveSkill = (e) => {
@@ -306,7 +331,7 @@ const EditCV = () => {
           <hr />
 
           <div className="skills-entry">
-            <input className="skill" type="text" value={skill} placeholder="Add skills, certifications and/or general achievements here (ie. LEAN Certified, etc...)" onChange={(e) => setSkill(e.target.value)} />
+            <input className="skill" type="text" value={skill} placeholder="Add skills, certifications and/or general achievements here (ie. LEAN Certified, etc...)" onKeyDown={handleAddSkillKP} />
 
             <button className="add-btn" onClick={handleAddSkill}>Add</button>
           </div>

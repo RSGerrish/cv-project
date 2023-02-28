@@ -296,6 +296,7 @@ header a {
 
 .add-positioner {
   min-width: 475px;
+  max-width: 565px;
   text-align: center;
 }
 
@@ -556,8 +557,9 @@ header a {
 .skills-entry-display {
   display: flex;
   justify-content: space-around;
-  margin: 2em 0 1em;
+  margin: 2em auto 1em;
   flex-wrap:wrap;
+  max-width: 80%;
 }
 
 .skill-container {
@@ -658,6 +660,11 @@ header a {
   border-color: #f1f1f1;
   border-width: 1px;
   width: 100%;
+}
+
+.open-message {
+  margin-top: 1em;
+  text-align:justify;
 }
 
 

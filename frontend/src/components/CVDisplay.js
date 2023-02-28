@@ -96,7 +96,7 @@ const CVDisplay = ({ cv }) => {
             </div>
           )
         })}
-        <hr />
+        { cv.experience && <hr />}
         {cv.schools && cv.schools.map((school) => {
           const parseDateFrom = school.datefrom.split('-')
           const parseDateTo = school.dateto.split('-')
@@ -119,7 +119,7 @@ const CVDisplay = ({ cv }) => {
             </div>
           )
         })}
-        <hr />
+        {cv.schools && <hr />}
         <div className="references-container">
           {cv.references && <div className="reference-title-container">
             <div className="reference-title"><h2>References</h2></div>

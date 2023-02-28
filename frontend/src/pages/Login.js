@@ -30,6 +30,13 @@ const Login = () => {
       />
       <button disabled={isLoading}>Log In</button>
       {error && <div className="error">{error}</div>}
+      <div className="open-message">
+        Feel free to create your own login or use the pre-populated guest account listed below. If you choose to create your own account, feel free to use a fake email address.
+        <ul><u>Guest Account</u>
+          <li>Email: guest@guest.com</li>
+          <li>Password: ABCabc123!</li>
+        </ul>
+      </div>
     </form>
   )
 }
