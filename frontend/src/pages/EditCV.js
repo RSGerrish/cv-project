@@ -139,7 +139,7 @@ const EditCV = () => {
 
     const cv = {address, phone, email, title, name, profile, website, github, linkedin, experience, schools, skills, references}
 
-    const response = await fetch('https://cv-creator.onrender.com' + '/api/cvs/' + cvs[index]._id, {
+    const response = await fetch('https://cv-creator.onrender.com/api/cvs/' + cvs[index]._id, {
       method: 'PATCH',
       body: JSON.stringify(cv),
       headers: {
@@ -185,8 +185,24 @@ const EditCV = () => {
       <div className="add-container">
         <div className="add-positioner">
           {error && <div className="form-error">{error}</div>}
-
           <div className="contact-container">
+            <input 
+              type="tel"
+              className="tel-input"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              onChange={(e) => setPhone(e.target.value)}
+              value={phone}
+              placeholder="555-555-5555"
+            />
+
+            <input 
+              type="email"
+              className="email-input"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              placeholder="your@email.com"
+            />
+
             <input 
               type="text"
               className="address-input"
@@ -194,25 +210,6 @@ const EditCV = () => {
               value={address}
               placeholder="Your Address"
             />
-
-            <div className="phonemail-container">
-              <input 
-                type="tel"
-                className="tel-input"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                onChange={(e) => setPhone(e.target.value)}
-                value={phone}
-                placeholder="555-555-5555"
-              />
-
-              <input 
-                type="email"
-                className="email-input"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                placeholder="your@email.com"
-              />
-            </div>
           </div>
 
           <div className="intro-container">

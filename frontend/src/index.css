@@ -79,7 +79,7 @@ header {
 
 header .navbar {
   max-width: 900px;
-  margin: 0 auto;
+  margin: auto;
   padding: 10px 20px;
   display: flex;
   align-items: center;
@@ -89,6 +89,25 @@ header .navbar {
 nav {
   display: flex;
   align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container>span {
+  color:#000;
+  font-size: 3em;
+}
+
+.logo-container>span:hover {
+  color:#000;
+}
+
+.logo-container>h1 {
+  font-size: 2.5em;
+  margin: 0 0 0 .25em;
 }
 
 nav a {
@@ -288,11 +307,13 @@ header a {
   flex-direction: column;
   align-items: center;
   width: 50%;
-  margin: auto;
+  margin: 1em auto;
   padding: 1em;
+  font-weight: 300;
+  font-size: .85em;
 }
 
-.address-input, .address {
+.address-input, .address, .tel-input, .email-input, .email, .phone  {
   min-width: 100%;
   text-align: center;
 }
@@ -301,11 +322,6 @@ header a {
   min-width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.tel-input, .email-input, .email, .phone {
-  min-width: 50%;
-  text-align: center;
 }
 
 .cv-list {
@@ -323,8 +339,7 @@ header a {
   font-size: 3em;
   font-weight: 500;
   width: 100%;
-  margin-top: 1rem;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .prof-title {
@@ -335,7 +350,7 @@ header a {
 }
 
 .profile-input, .profile , .highlights-input, .highlights {
-  margin: 0 0 1.5rem 0;
+  margin: 1.5em 0 1.5rem 0;
   padding: 0;
   width: 90%;
   resize: none;
@@ -367,6 +382,7 @@ header a {
 .experience-entry {
   width: 100%;
   position: relative;
+  margin-top: 1em;
 }
 
 .experience-container {
@@ -379,7 +395,7 @@ header a {
   width: 50%;
 }
 
-.pos-title, .school-name {
+.pos-title {
   font-size: 1.5em;
   font-weight: 400;
   margin: 0;
@@ -388,13 +404,13 @@ header a {
 .company-name {
   font-size: 1em;
   font-weight: 200;
-  margin: 0 0 1em 0;
+  margin: 0.5em 0;
 }
 
 .exp-duration-container {
   width: 50%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .exp-date {
@@ -422,7 +438,7 @@ header a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .material-symbols-outlined {
@@ -467,6 +483,17 @@ header a {
   width: 50%;
 }
 
+.school-name {
+  font-weight: 400;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.school-location, .school-degree {
+  font-weight: 200;
+  font-size: .9em;
+}
+
 .sch-duration-container {
   display: flex;
   justify-content: flex-end;
@@ -488,6 +515,7 @@ header a {
 
 .schoollocation, .degree {
   font-size: 1em;
+  margin-top: 0.4em;
 }
 
 .degree {
@@ -526,7 +554,7 @@ header a {
 .skills-entry-display {
   display: flex;
   justify-content: space-around;
-  margin: 1em 0;
+  margin: 2em 0 1em;
   flex-wrap:wrap;
 }
 

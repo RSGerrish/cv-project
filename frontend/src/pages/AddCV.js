@@ -116,7 +116,7 @@ const AddCV = () => {
     else if (e.key === 'Backspace' || 'Delete') {
       const transformArr = e.target.value.split('')
       console.log(e)
-      if (e.target.selectionEnd != e.target.selectionStart) { 
+      if (e.target.selectionEnd !== e.target.selectionStart) { 
         transformArr.splice(e.target.selectionStart, e.target.selectionEnd - e.target.selectionStart)
         setSkill(transformArr.join(''))
       } else if (e.key === 'Backspace') {
@@ -172,7 +172,7 @@ const AddCV = () => {
 
     const cv = {address, phone, email, title, name, profile, website, github, linkedin, experience, schools, skills, references}
     
-    const response = await fetch('https://cv-creator.onrender.com' + '/api/cvs/', {
+    const response = await fetch('https://cv-creator.onrender.com/api/cvs/', {
       method: 'POST',
       body: JSON.stringify(cv),
       headers: {
@@ -221,6 +221,24 @@ const AddCV = () => {
           {error && <div className="form-error">{error}</div>}
 
           <div className="contact-container">
+
+            <input 
+              type="tel"
+              className="tel-input"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              onChange={(e) => setPhone(e.target.value)}
+              value={phone}
+              placeholder="555-555-5555"
+            />
+
+            <input 
+              type="email"
+              className="email-input"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              placeholder="your@email.com"
+            />
+
             <input 
               type="text"
               className="address-input"
@@ -229,24 +247,6 @@ const AddCV = () => {
               placeholder="Your Address"
             />
 
-            <div className="phonemail-container">
-              <input 
-                type="tel"
-                className="tel-input"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                onChange={(e) => setPhone(e.target.value)}
-                value={phone}
-                placeholder="555-555-5555"
-              />
-
-              <input 
-                type="email"
-                className="email-input"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                placeholder="your@email.com"
-              />
-            </div>
           </div>
 
           <div className="intro-container">

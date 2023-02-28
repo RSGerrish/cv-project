@@ -20,7 +20,7 @@ const CVDisplay = ({ cv }) => {
       return
     }
 
-    const response = await fetch('https://cv-creator.onrender.com' + '/api/cvs/' + cv._id, {
+    const response = await fetch('https://cv-creator.onrender.com/api/cvs/' + cv._id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${user.token}`
@@ -58,6 +58,14 @@ const CVDisplay = ({ cv }) => {
         <h1 className="name">{cv.name}</h1>
         <h2 className="prof-title">{cv.title}</h2>
         <h3 className="profile">{cv.profile}</h3>
+        <hr />
+        <div className="display-skills-container">
+          {cv.skills && cv.skills.map((skill) => {
+            return (
+              <div key={uniqid()} className="display-skill-container">{skill}</div>
+            )
+          })}
+        </div>
         <hr />
         <div className="portfolio-container">
           <h4 className="portfolio-item">{cv.website}</h4>
@@ -112,14 +120,6 @@ const CVDisplay = ({ cv }) => {
           )
         })}
         <hr />
-        <div className="display-skills-container">
-          {cv.skills && cv.skills.map((skill) => {
-            return (
-              <div key={uniqid()} className="display-skill-container">{skill}</div>
-            )
-          })}
-        </div>
-        <hr />
         <div className="references-container">
           {cv.references && <div className="reference-title-container">
             <div className="reference-title"><h2>References</h2></div>
@@ -131,7 +131,7 @@ const CVDisplay = ({ cv }) => {
             </div>}
           {cv.references && cv.references.map((reference) => {
             return (
-              <div className="reference-dis-container">
+              <div key={uniqid()} className="reference-dis-container">
                 <div className="ref-dis-name">{reference.refname}</div>
                 <div className="ref-dis-relation">{reference.refrelation}</div>
                 <div className="ref-dis-phone">{reference.refphone}</div>
