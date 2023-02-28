@@ -3,7 +3,7 @@
 To practice using classes, states and props in React while building a useful tool during my job search
 
 ## v3.1 Final Thoughts
-Final version fully working. I now have a fairly good understanding of how the MongoDB server is communicating with my Express middleware app and how that middleware is integrated with my frontend. Managed to workout an 'UPDATE' route on my own and am fairly happy with the site as it is.
+Final version fully working. I now have a fairly good understanding of how the MongoDB server is communicating with my Express middleware app and how that middleware is integrated with my frontend. Added an 'UPDATE' route and am fairly happy with the site as it is.
 
 Updates:
 - UPDATE route added
@@ -11,8 +11,8 @@ Updates:
 - Authorization added
 
 Updates and Features to come:
-- Error handling
-- CSS facelift
+- Error handling - 50% complete
+- CSS facelift - 80% complete
 - Ability to save CV as PDF
 - Ability to print CV
 
