@@ -53,6 +53,7 @@ button {
   padding: 1em;
   background: #fff;
   margin-left: 10px;
+  margin-top: 1em;
   color: var(--primary);
   border: 2px solid var(--primary);
   padding: 6px 10px;
@@ -430,6 +431,7 @@ header a {
 .add-btn {
   position:absolute;
   margin-left: 2em;
+  margin-top: 0;
   right: -5em;
   bottom: 0;
 }
